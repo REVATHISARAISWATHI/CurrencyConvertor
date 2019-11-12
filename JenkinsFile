@@ -23,6 +23,14 @@ lib 'shlib'
                     sh 'mvn clean install'
                  }
             }
+            stages {
+      stage('Startnexus')
+            {
+                steps
+                 { 
+                    sendNotifications 'STARTEDNEX'
+                 }
+            }
 }
 post{
 always{

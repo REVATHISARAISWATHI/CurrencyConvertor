@@ -4,7 +4,7 @@ lib 'shlib'
 }
 tool
 {
-Maven 'Maven'
+maven 'Maven'
 }
 
     agent any

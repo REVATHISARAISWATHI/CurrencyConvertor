@@ -30,6 +30,13 @@ lib 'shlib'
                     sendNotifications 'STARTEDNEX'
                  }
             }
+             stage('Startsonar')
+            {
+                steps
+                 { 
+                    sendNotifications 'Sonarstagestarted'
+                 }
+            }
 }
 post{
 always{

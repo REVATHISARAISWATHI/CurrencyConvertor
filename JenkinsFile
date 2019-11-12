@@ -1,6 +1,7 @@
 pipeline {
 libraries{
 lib 'shlib'
+lib 'shlib@sonar.groovy'
 }
     agent any
     tools{

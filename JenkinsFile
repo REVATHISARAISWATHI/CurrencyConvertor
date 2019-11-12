@@ -2,6 +2,11 @@ pipeline {
 libraries{
 lib 'shlib'
 }
+tool
+{
+Maven 'Maven'
+}
+
     agent any
  
     stages {

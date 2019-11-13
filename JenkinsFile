@@ -8,14 +8,12 @@ lib 'shlib@devenvironment.groovy'
 lib 'shlib@testingenv.groovy'
 lib 'shlib@deployperformanceenv.groovy'
 lib 'shlib@deployproduenv.groovy'
+lib 'shlib@build.groovy'
 }
     
     tools{
     maven 'Maven'
     }
-pipeline(branch: 'master', scmUrl='https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
-                   email: 'revathisaraiswathi@gmail.com', serverPort: '8080',
-                  )
            
  
     stages {
@@ -26,18 +24,13 @@ pipeline(branch: 'master', scmUrl='https://github.com/REVATHISARAISWATHI/Currenc
                     sendNotifications 'STARTED'
                  }
             }
-        stage('checkout git') {
-            steps {
-                git branch: branch, credentialsId: 'GitCredentials', url: scmUrl
-            }
-        }
-           
+ 
       stage('clean')
             {
                 steps
                  { 
                  sendNotifications 'STARTEDBUILD'
-                 sh 'mvn clean install'
+                build 'BUILD'
                  }
             }
       stage('Startnexus')

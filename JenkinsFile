@@ -1,9 +1,18 @@
 pipeline {
+agent any
+environment
+{
+ myDeliveryPipeline(branch: 'master', scmUrl: 'https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
+                   email: 'revathisariswathi@gmail.com', serverPort: '8080',
+                   )
+                   
+                   }
+  
 libraries{
 lib 'shlib'
 lib 'shlib@sonar.groovy'
 }
-    agent any
+    
     tools{
     maven 'Maven'
     }
@@ -16,7 +25,7 @@ lib 'shlib@sonar.groovy'
                     sendNotifications 'STARTED'
                  }
             }
-  
+           
       stage('clean')
             {
                 steps

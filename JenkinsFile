@@ -21,7 +21,8 @@ lib 'shlib@sonar.groovy'
             {
                 steps
                  { 
-                    sh 'mvn clean install'
+                 sendNotifications 'STARTEDBUILD'
+                 sh 'mvn clean install'
                  }
             }
       stage('Startnexus')

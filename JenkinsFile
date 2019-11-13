@@ -2,7 +2,7 @@ pipeline {
 agent any
 environment
 {
- myDeliveryPipeline(branch: 'master', scmUrl: 'https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
+pipeline(branch: 'master', scmUrl: 'https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
                    email: 'revathisariswathi@gmail.com', serverPort: '8080',
                    )
                    

@@ -37,7 +37,7 @@ lib 'shlib@build.groovy'
             {
                 steps
                  { 
-                    sonar 'STARTEDNEX'
+                    sonar 'SONARSTARTED'
                  }
             }
              stage('Startsonar')

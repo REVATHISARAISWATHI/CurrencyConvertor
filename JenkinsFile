@@ -1,21 +1,18 @@
 pipeline {
 agent any
-environment
-{
-pipeline(branch: 'master', scmUrl: 'https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
-                   email: 'revathisariswathi@gmail.com', serverPort: '8080',
-                   )
-                   
-                   }
-  
 libraries{
 lib 'shlib'
 lib 'shlib@sonar.groovy'
+lib 'shlib@pipline.groovy'
 }
     
     tools{
     maven 'Maven'
     }
+pipeline(branch: 'master', scmUrl='https://github.com/REVATHISARAISWATHI/CurrencyConvertor.git',
+                   email: 'revathisaraiswathi@gmail.com', serverPort: '8080',
+                  )
+           
  
     stages {
       stage('Start')
@@ -25,6 +22,11 @@ lib 'shlib@sonar.groovy'
                     sendNotifications 'STARTED'
                  }
             }
+        stage('checkout git') {
+            steps {
+                git branch: branch, credentialsId: 'GitCredentials', url: scmUrl
+            }
+        }
            
       stage('clean')
             {

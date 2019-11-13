@@ -4,6 +4,10 @@ libraries{
 lib 'shlib'
 lib 'shlib@sonar.groovy'
 lib 'shlib@pipline.groovy'
+lib 'shlib@devenvironment.groovy'
+lib 'shlib@testingenv.groovy'
+lib 'shlib@deployperformanceenv.groovy'
+lib 'shlib@deployproduenv.groovy'
 }
     
     tools{

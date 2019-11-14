@@ -2,13 +2,6 @@ pipeline {
 agent any
 libraries{
 lib 'shlib'
-lib 'shlib@sonar.groovy'
-lib 'shlib@pipline.groovy'
-lib 'shlib@devenvironment.groovy'
-lib 'shlib@testingenv.groovy'
-lib 'shlib@deployperformanceenv.groovy'
-lib 'shlib@deployproduenv.groovy'
-lib 'shlib@build.groovy'
 }
     
     tools{
@@ -22,6 +15,8 @@ lib 'shlib@build.groovy'
                 steps
                  { 
                     sendNotifications 'STARTED'
+                    email  Run.mail('revathisaraiswathi@gmail.com')
+                    
                  }
             }
  

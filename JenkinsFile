@@ -28,20 +28,6 @@ agent any
                 build 'BUILD'
                  }
             }
-     /* stage('Startnexus')
-            {
-                steps
-                 { 
-                    sonar 'SONARSTARTED'
-                 }
-            }
-             stage('Startsonar')
-            {
-                steps
-                 { 
-                    sonar 'Sonarstagestarted'
-                 }
-            }*/
 }
 post{
 always{

@@ -1,8 +1,9 @@
 pipeline {
-agent any
 libraries{
-lib 'shlib'
+lib 'lib'
 }
+agent any
+
     
     tools{
     maven 'Maven'

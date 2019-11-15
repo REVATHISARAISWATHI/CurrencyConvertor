@@ -16,7 +16,6 @@ agent any
                 steps
                  { 
                     sendNotifications 'STARTED'
-                  build 'BUILD'
                     
                  }
             }
@@ -29,7 +28,7 @@ agent any
                 build 'BUILD'
                  }
             }
-      stage('Startnexus')
+     /* stage('Startnexus')
             {
                 steps
                  { 
@@ -42,7 +41,7 @@ agent any
                  { 
                     sonar 'Sonarstagestarted'
                  }
-            }
+            }*/
 }
 post{
 always{

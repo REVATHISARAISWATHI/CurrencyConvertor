@@ -1,37 +1,20 @@
 pipeline {
-libraries{
-lib 'shlib'
-}
-agent any
-
-    
-    tools{
-    maven 'Maven'
-    }
-           
+    agent any
  
     stages {
-      stage('Start')
-            {
-                steps
-                 { 
-                    sendNotifications 'STARTED'
-                    
-                 }
-            }
- 
+
       stage('clean')
             {
                 steps
                  { 
-                 sendNotifications 'STARTEDBUILD'
-                build 'BUILD'
+                    sh 'mvn clean install'
                  }
             }
-}
-post{
-always{
-sendNotifications currentBuild.result
-}
+    stage("deploy")
+    {
+        steps{
+            deploy adapters: [tomcat9(credentialsId: 'tocat',  url: 'http://3.15.0.139:8088')], contextPath: 'deploy', onFailure: false, war: '**/*.war'        
+            }
+    }
 }
 }

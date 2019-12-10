@@ -17,7 +17,7 @@ pipeline {
             stage('Uploading playbook to Ansible'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){
-                //sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'project-ansible.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])   
+               
                 sh 'sshpass -p ${ansadmin_password} scp -v cur-Playbook.yml ansadmin@172.31.33.191:/opt/playbooks'
                 }
             }

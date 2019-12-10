@@ -18,7 +18,7 @@ pipeline {
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){
                
-                sh 'sshpass -p ${ansadmin_password} scp -v cur-Playbook.yml ansadmin@172.31.33.191:/opt/playbooks'
+                sh 'sshpass -p ${ansadmin_password} scp -v /var/lib/jenkins/workspace/free/cur-Playbook.yml ansadmin@172.31.33.191:/opt/playbooks'
                 }
             }
             

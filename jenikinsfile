@@ -14,33 +14,21 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-            stage('Uploading playbook to Ansible'){
+           
+        stage('deploy ansible'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){
-               
-                sh 'sshpass -p ${ansadmin_password} scp -v /var/lib/jenkins/workspace/free/cur-Playbook.yml ansadmin@172.31.33.191:/opt/playbooks'
+                sh 'sshpass -p ${ansadmin_password} ssh -v -o StrictHostKeyChecking=no ansadmin@ip-172-31-6-239 \"cd /opt/playbooks; wget -O dynamic_new-1.war  /var/lib/jenkins/workspace/ans/target/dynamic_new-1.war"'
                 }
             }
-            
         }
-        stage('Uploading artifacts to Ansible'){
+         stage('Executing Playbook'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){
-                //sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook /opt/playbooks/project-ansible.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
-                //sh 'scp -v -i /home/ansadmin/.ssh/jen-ans.pub -o StrictHostKeyChecking=no target/*.war ansadmin@172.31.22.13:/opt/playbooks/target'
-                //sh 'sshpass -p ${ansadmin_password} scp -v target/*.war ansadmin@172.31.22.13:/opt/playbooks/target'
-                sh 'sshpass -p ${ansadmin_password} ssh -v -o StrictHostKeyChecking=no ansadmin@172.31.33.191 \"cd /opt/playbooks/target; wget -O Wepappp-0.0.1.war http://18.220.192.105:8080/var/lib/jenkins/workspace/free/target/Webappp-0.0.1.war\"'
+                    sh 'sudo sshpass -p ${ansadmin_password} ssh -v -o StrictHostKeyChecking=no ansadmin@172-31-6-239  \"ansible-playbook /opt/playbooks/demo.yml\"'
+               }
                 }
             }
-        }
-       stage('Executing Playbook'){
-            steps{
-                withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){//-C \"export VAULTPASS=${ansadmin_password};
-                    sh 'sshpass -p ${ansadmin_password} ssh -v -o StrictHostKeyChecking=no ansadmin@172.31.33.191 \"ansible-playbook /opt/playbooks/cur-Playbook.yml\"'
-                    //sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook /opt/playbooks/project-ansible.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
-                }
-            }
-        }
         
             }
             }

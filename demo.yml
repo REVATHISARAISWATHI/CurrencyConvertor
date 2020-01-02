@@ -1,41 +1,18 @@
 ---
-
-- hosts: tomcatServer
-
+- hosts: all_hosts
+  become: true
   vars:
-
-  - warName: helloworld.war
-
-  - warRemotePath: /path/to/put/war
-
-
-
+   - warName: Webappp-0.0.1.war
+   - warRemotePath: http://18.216.61.164:8880/manager/html
   tasks:
-
-  - name: Download WAR to server
-
-    synchronize: src={{ warLocalPath }}/{{ warName }} dest={{ warRemotePath }}/{{ warName }}
-
-
-
-  - name: Unzip WAR file
-
-    unarchive: src={{ warRemotePath }}/{{ warName }} dest=/var/lib/tomcat7/webapps/ROOT/ copy=no mode=0755 owner=tomcat7 group=tomcat7
-
-    notify:
-
-        - Restart tomcat7
-
-
-
+   - name: Download WAR to server
+     synchronize: src=/var/lib/jenkins/workspace/target/Webappp-0.0.1.war dest=http://18.216.61.164:8880/manager/html/Webappp-0.0.1.war
+   - name: Unzip WAR file
+     unarchive: src=http://18.216.61.164:8880/manager/html/Webappp-0.0.1.war dest=/home/ec2-user/shell/apache-tomcat-8.5.49/webapps/ROOT/ copy=no mode=0755 owner=apache-tomcat-8.5.49 group=apache-tomcat-8.5.49
+     notify:
+      - Restart apache-tomcat-8.5.49
   - name: Delete remote war file
-
-    file: path={{ warRemotePath }}/{{ warName }} state=absent
-
-
-
-  handlers:
-
-    - name: Restart tomcat7
-
-      service: name=tomcat7 state=restarted
+    file: path=http://18.216.61.164:8880/manager/html/Webappp-0.0.1.war state=absent
+ handlers:
+  - name: Restart 
+    service: name=apache-tomcat-8.5.49 state=restarted

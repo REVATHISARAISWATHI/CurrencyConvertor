@@ -10,6 +10,12 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
+            stage('bitbucket')
+            {
+            steps{
+            sh 'curl -X POST -v -u myaccount:passwd "https://bitbucket.org/Megalai" -H "Content-Type: application/json" -d '{"name":"mega"}''
+            }
+            }
     stage("deploy")
     {
         steps{

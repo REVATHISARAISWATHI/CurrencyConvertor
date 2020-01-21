@@ -1,3 +1,4 @@
+@shlib_
 pipeline {
     agent any
     tools
@@ -17,7 +18,7 @@ pipeline {
             stage('bitbucket')
             {
             steps{
-            sh 'curl -X POST -v -u Megalai:Mumani1209@98 "https://api.bitbucket.org/Megalai" -H "Content-Type: application/json"'
+            bitbucket()
             }
             }
            

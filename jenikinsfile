@@ -17,7 +17,7 @@ pipeline {
             stage('bitbucket')
             {
             steps{
-            sh 'curl -X POST -v -u myaccount:passwd "https://api.bitbucket.org/Megalai" -H "Content-Type: application/json"'
+            sh 'curl -X POST -v -u Megalai:Mumani1209@98 "https://api.bitbucket.org/Megalai" -H "Content-Type: application/json"'
             }
             }
            

@@ -1,4 +1,4 @@
-@shlib_
+@Library('shlib')_
 pipeline {
     agent any
     tools

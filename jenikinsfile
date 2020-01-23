@@ -19,7 +19,7 @@ pipeline {
     {
    steps{
     
-    deletera 'ans',0,121
+    deletera 'ans',121,128
   
   }
     }

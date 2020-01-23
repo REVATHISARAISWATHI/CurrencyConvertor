@@ -21,6 +21,12 @@ pipeline {
             bitbucket()
             }
             }
+            stage('branch')
+            {
+            steps{
+            bitbucketbranch()
+            }
+            }
            
        /* stage('deploy ansible'){
             steps{

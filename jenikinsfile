@@ -15,7 +15,7 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-        /* stage('bitbucket')
+        stage('bitbucket')
             {
             steps{
             bitbucket()
@@ -26,7 +26,7 @@ pipeline {
             steps{
             bitbucketbranch()
             }
-            }*/
+            }
             stage('list')
             {
             steps{

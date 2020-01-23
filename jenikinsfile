@@ -15,15 +15,7 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-             stage('deletera')
-    {
-   steps{
-    
-    deletera 'ans',121,128
-  
-  }
-    }
-        /*stage('bitbucket')
+            stage('bitbucket')
           {
             steps{
             bitbucket()
@@ -40,7 +32,12 @@ pipeline {
             steps{
             bitbucketlist()
             }
-            } */
+            } 
+           /*  stage('deletera') {
+          steps{
+           deletera 'ans',121,128
+           }
+           }*/
        /* stage('deploy ansible'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){

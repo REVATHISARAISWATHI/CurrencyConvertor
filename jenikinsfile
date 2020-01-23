@@ -21,7 +21,7 @@ pipeline {
             bitbucket 'Megalai'
             }
             }
-          stage('branch')
+         /* stage('branch')
             {
             steps{
             bitbucketbranch()
@@ -32,7 +32,7 @@ pipeline {
             steps{
             bitbucketlist()
             }
-            }
+            } */
        /* stage('deploy ansible'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){

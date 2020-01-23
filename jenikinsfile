@@ -23,13 +23,13 @@ pipeline {
   
   }
     }
-        stage('bitbucket')
-            {
+        /*stage('bitbucket')
+          {
             steps{
             bitbucket()
             }
             }
-         /* stage('branch')
+        stage('branch')
             {
             steps{
             bitbucketbranch()

@@ -15,12 +15,13 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-            stage('bitbucket')
+        /*    stage('bitbucket')
             {
             steps{
             bitbucket()
             }
             }
+            */
             stage('branch')
             {
             steps{

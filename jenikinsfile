@@ -18,7 +18,7 @@ pipeline {
         stage('bitbucket')
             {
             steps{
-            bitbucket 'https://api.bitbucket.org/2.0/repositories/Megalai/repo8'
+            bitbucket()
             }
             }
          /* stage('branch')

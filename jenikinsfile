@@ -15,7 +15,7 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-         /*  stage('bitbucket')
+         stage('bitbucket')
             {
             steps{
             bitbucket()
@@ -26,14 +26,14 @@ pipeline {
             steps{
             bitbucketbranch()
             }
-            }*/
-             stage('list')
+            }
+            ?* stage('list')
             {
             steps{
             bitbucketlist()
             }
             }
-           
+           */
        /* stage('deploy ansible'){
             steps{
                 withCredentials([string(credentialsId: 'ans-admin', variable: 'ansadmin_password')]){

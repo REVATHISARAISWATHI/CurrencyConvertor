@@ -17,6 +17,9 @@ pipeline {
             }
            stage('bitbucket')
             {
+            environment {
+    BITBUCKET_COMMON_CREDS = credentials('Bitbucket')
+                }
             steps{
             bitbucket()
             }

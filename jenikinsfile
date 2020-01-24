@@ -27,6 +27,19 @@ pipeline {
             bitbucketlist()
             }
             } 
+            stage('bamboo')
+            {
+            steps{
+            bambooconector()
+            }
+            } 
+             stage('bamboocol')
+            {
+            steps{
+            bamboocollector()
+            }
+            } 
+            
     /*    stage('branch')
             {
             steps{

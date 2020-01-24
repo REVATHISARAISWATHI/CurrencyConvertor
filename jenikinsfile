@@ -18,21 +18,22 @@ pipeline {
             stage('bitbucket')
           {
             steps{
-            bitbucket 'repo9'
+            bitbucket()
             }
             }
-        stage('branch')
-            {
-            steps{
-            bitbucketbranch()
-            }
-            }
-            stage('list')
+             stage('list')
             {
             steps{
             bitbucketlist()
             }
             } 
+    /*    stage('branch')
+            {
+            steps{
+            bitbucketbranch()
+            }
+            }*/
+           
            /*  stage('deletera') {
           steps{
            deletera 'ans',121,128

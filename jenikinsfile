@@ -18,7 +18,7 @@ pipeline {
             stage('bitbucket')
           {
             steps{
-            bitbucket()
+            bitbucket 'repo9'
             }
             }
         stage('branch')

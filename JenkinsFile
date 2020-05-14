@@ -10,17 +10,17 @@ pipeline {
                     sh 'mvn clean install'
                  }
             }
-            stage('bitbucket')
+          /*  stage('bitbucket')
             {
             steps{
             sh 'curl -X POST -v -u myaccount:passwd "https://bitbucket.org/Megalai" -H "Content-Type: application/json" -d '{"name":"mega"}''
             }
-            }
+            } 
     stage("deploy")
     {
         steps{
             deploy adapters: [tomcat9(credentialsId: 'tocat',  url: 'http://13.127.196.221:8090')], contextPath: 'deploy', onFailure: false, war: '**/*.war'        
             }
-    }
+    }*/
 }
 }
